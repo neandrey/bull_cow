@@ -10,7 +10,6 @@ class GameClass
     InputData in_data;
     int bull{0}, cow{0};
     std::vector<int> find_numbers, input_numbers;
-    void str_to_vec(const std::string &s, std::vector<int> &v);
 
 public:
     void init();
@@ -23,4 +22,5 @@ public:
     int get_cow() const { return cow; }
 };
 
+static void str_to_vec(const std::string &s, std::vector<int> &v);
 #endif

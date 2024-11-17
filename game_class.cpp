@@ -26,13 +26,23 @@ void GameClass::start()
     }
 }
 
-void GameClass::str_to_vec(const string &s, vector<int> &v)
+/**
+ * @brief преобразование строки в вектор
+ *
+ * @param s строка
+ * @param v вектор
+ */
+void str_to_vec(const string &s, vector<int> &v)
 {
     v.clear();
     for (auto c : s)
         v.push_back(c - '0');
 }
 
+/**
+ * @brief Поиск быков и коров
+ *
+ */
 void GameClass::find_coincidences()
 {
     for (size_t i = 0; i < 4; ++i)
@@ -48,6 +58,10 @@ void GameClass::find_coincidences()
     }
 }
 
+/**
+ * @brief  Вывод отладочной информации
+ *
+ */
 void GameClass::print() const
 {
     for (auto i : find_numbers)

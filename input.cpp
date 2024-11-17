@@ -6,6 +6,12 @@ using std::endl;
 using std::string;
 using std::vector;
 
+/**
+ * @brief Проверка на дублирование
+ *
+ * @return true
+ * @return false
+ */
 bool InputData::is_diff()
 {
     for (size_t h = 0; h < s_data.size(); ++h)
@@ -21,6 +27,12 @@ bool InputData::is_diff()
     return true;
 }
 
+/**
+ * @brief Проверка на число
+ *
+ * @return true
+ * @return false
+ */
 bool InputData::is_digit()
 {
     for (auto c : s_data)
@@ -29,6 +41,11 @@ bool InputData::is_digit()
     return true;
 }
 
+/**
+ * @brief Чтение данных из командной строки
+ *
+ * @return const string&
+ */
 const string &InputData::input_data()
 {
     while (true)
