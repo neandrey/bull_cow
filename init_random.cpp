@@ -5,6 +5,9 @@ using std::random_device;
 using std::uniform_int_distribution;
 using std::vector;
 
+InitRand::InitRand(int _max, int _min, int _len)
+    : max(_max), min(_min), len(_len) {}
+
 int InitRand::random_number(int min, int max)
 {
     random_device r;
@@ -13,13 +16,14 @@ int InitRand::random_number(int min, int max)
     return uniform_dist(e1);
 }
 
-void InitRand::random_vector(vector<int> &v)
+const vector<int> InitRand::random_vector()
 {
     bool flag{false};
-    while (v.size() != 4)
+    rand_v.clear();
+    while (rand_v.size() < len)
     {
-        int rand = random_number(0, 9);
-        for (auto i : v)
+        int rand = random_number(min, max);
+        for (auto i : rand_v)
         {
             if (i == rand)
             {
@@ -32,6 +36,7 @@ void InitRand::random_vector(vector<int> &v)
             flag = false;
             continue;
         }
-        v.push_back(rand);
+        rand_v.push_back(rand);
     }
+    return rand_v;
 }

@@ -3,24 +3,27 @@
 #include <vector>
 #include <iostream>
 #include "input.h"
-#include "init_random.h"
+#include "player.h"
 
 class GameClass
 {
+
     InputData in_data;
-    int bull{0}, cow{0};
-    std::vector<int> find_numbers, input_numbers;
+    AskPlayer p_ask;
+    AnswerPlayer p_answer;
+    std::pair<int, int> bull_cow{0, 0};
 
 public:
     void init();
     void start();
-    void clear() { bull = cow = 0; }
+    void clear()
+    {
+        bull_cow.first = 0;
+        bull_cow.second = 0;
+    }
 
-    void find_coincidences();
-    void print() const;
-    int get_bull() const { return bull; }
-    int get_cow() const { return cow; }
+    void debug_output() const;
+    int get_bull() const { return bull_cow.first; }
+    int get_cow() const { return bull_cow.second; }
 };
-
-static void str_to_vec(const std::string &s, std::vector<int> &v);
 #endif
