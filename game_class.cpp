@@ -1,5 +1,6 @@
 #include "game_class.h"
 
+using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
@@ -18,20 +19,57 @@ void GameClass::init()
  * @brief  Цикл игры
  *
  */
-void GameClass::start()
+void GameClass::game_start()
 {
-    while (true)
+    char ch = 'a';
+    do
     {
-        clear();
-        p_answer.input_data();
-        bull_cow = p_ask.find_coincidences(p_answer.get_data());
-        debug_output();
-        if (bull_cow.first == 4)
+        init();
+        while (true)
         {
-            cout << "You win!" << endl;
-            break;
+            clear();
+
+            if (!p_answer.input_data())
+            {
+                ch = 'n';
+                break;
+            }
+
+            bull_cow = p_ask.find_coincidences(p_answer.get_data());
+
+            debug_output();
+
+            if (winner())
+            {
+                cout << "You win!" << endl;
+                cout << "Хотите еще раз сыграть (y/n):";
+                cin >> ch;
+                break;
+            }
         }
-    }
+
+    } while (ch != 'n');
+}
+
+/**
+ * @brief Проверка на выигрыш
+ *
+ * @return true
+ * @return false
+ */
+bool GameClass::winner()
+{
+    return (bull_cow.first == 4) ? true : false;
+}
+
+/**
+ * @brief Сброс значения коров и быков
+ *
+ */
+void GameClass::clear()
+{
+    bull_cow.first = 0;
+    bull_cow.second = 0;
 }
 
 /**

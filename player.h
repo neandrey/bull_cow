@@ -11,7 +11,7 @@ class Player
     std::vector<int> data;
 
 public:
-    void input_data();
+    bool input_data();
     void set_data(const std::vector<int> &v);
     std::vector<int> get_data() const { return data; }
 };

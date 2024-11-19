@@ -8,12 +8,16 @@ using std::vector;
  * @brief  Ввод данных в вектор
  *
  */
-void Player::input_data()
+bool Player::input_data()
 {
-    data.clear();
     string temp = input.input_data();
+    if (temp == "#")
+        return false;
+
+    data.clear();
     for (auto c : temp)
         data.push_back(c - '0');
+    return true;
 }
 
 void Player::set_data(const vector<int> &v)

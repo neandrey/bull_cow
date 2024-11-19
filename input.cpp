@@ -50,17 +50,19 @@ const string &InputData::input_data()
 {
     while (true)
     {
-        std::cout << "Введите число: ";
+        std::cout << "Введите угадываемое число или # для выхода: ";
         getline(cin, s_data);
+        if (s_data == "#")
+            break;
         if ((s_data.size() == 4) && is_digit() && is_diff())
             break;
+        else if (!is_digit())
+        {
+            cout << "Ожидаются числа или # для выхода:" << endl;
+        }
         else if (s_data.size() != 4)
         {
             cout << "Ожидается 4-х знаковое число" << endl;
-        }
-        else if (!is_digit())
-        {
-            cout << "Только числа (0-9):" << endl;
         }
         else if (!is_diff())
         {
