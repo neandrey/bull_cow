@@ -1,3 +1,14 @@
+/**
+ * @file game_class.h
+ * @author ne_andrey
+ * @brief  основной класс игры
+ * @version 0.1
+ * @date 2024-11-19
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
+
 #ifndef GAME_CLASS_H
 #define GAME_CLASS_H
 #include <vector>
