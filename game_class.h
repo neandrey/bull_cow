@@ -15,12 +15,15 @@ class GameClass
 
 public:
     void init();
-    void game_start();
+    void start_game();
     void clear();
     bool winner();
     int get_bull() const { return bull_cow.first; }
     int get_cow() const { return bull_cow.second; }
+    void print_result();
 
+#ifdef DEBUG
     void debug_output() const;
+#endif
 };
 #endif

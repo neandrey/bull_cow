@@ -1,4 +1,5 @@
 #include "player.h"
+#include "settings.h"
 
 using std::pair;
 using std::string;
@@ -11,7 +12,7 @@ using std::vector;
 bool Player::input_data()
 {
     string temp = input.input_data();
-    if (temp == "#")
+    if (temp == EXIT)
         return false;
 
     data.clear();
@@ -27,7 +28,7 @@ void Player::set_data(const vector<int> &v)
 
 void AskPlayer::init()
 {
-    this->set_data(rnd.random_vector());
+    set_data(rnd.random_vector());
 }
 
 /**

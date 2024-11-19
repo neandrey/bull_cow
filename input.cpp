@@ -1,4 +1,5 @@
 #include "input.h"
+#include "settings.h"
 
 using std::cin;
 using std::cout;
@@ -50,23 +51,24 @@ const string &InputData::input_data()
 {
     while (true)
     {
-        std::cout << "Введите угадываемое число или # для выхода: ";
+        std::cout << "Введите угадываемое число или " << EXIT
+                  << " для выхода: ";
         getline(cin, s_data);
-        if (s_data == "#")
-            break;
-        if ((s_data.size() == 4) && is_digit() && is_diff())
+        if (s_data == EXIT ||
+            (s_data.size() == LEN) && is_digit() && is_diff())
             break;
         else if (!is_digit())
         {
-            cout << "Ожидаются числа или # для выхода:" << endl;
+            cout << "Ожидаются числа или " << EXIT
+                 << " для выхода : " << endl;
         }
-        else if (s_data.size() != 4)
+        else if (s_data.size() != LEN)
         {
-            cout << "Ожидается 4-х знаковое число" << endl;
+            cout << "Ожидается " << LEN << " значное число" << endl;
         }
         else if (!is_diff())
         {
-            cout << "В числе имееются совпадения: " << endl;
+            cout << "В числе имеются совпадения: " << endl;
         }
         cin.clear();
         while (cin.get() != '\n')

@@ -2,6 +2,7 @@
 #define INIT_RANDOM_H
 #include <random>
 #include <vector>
+#include "settings.h"
 
 class InitRand
 {
@@ -10,7 +11,7 @@ class InitRand
     static int random_number(int min, int max);
 
 public:
-    InitRand(int _max = 9, int _min = 0, int _len = 4);
+    InitRand(int _max = MAX_NUMBER, int _min = MIN_NUMBER, int _len = LEN);
     const std::vector<int> random_vector();
 };
 

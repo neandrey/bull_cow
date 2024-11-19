@@ -19,7 +19,7 @@ void GameClass::init()
  * @brief  Цикл игры
  *
  */
-void GameClass::game_start()
+void GameClass::start_game()
 {
     char ch = 'a';
     do
@@ -34,21 +34,32 @@ void GameClass::game_start()
                 ch = 'n';
                 break;
             }
-
             bull_cow = p_ask.find_coincidences(p_answer.get_data());
-
+#ifdef DEBUG
             debug_output();
-
+#endif
+            print_result();
             if (winner())
             {
                 cout << "You win!" << endl;
                 cout << "Хотите еще раз сыграть (y/n):";
                 cin >> ch;
+                cin.get();
                 break;
             }
         }
 
     } while (ch != 'n');
+}
+/**
+ * @brief  Вывод информации о быках и коровах
+ *
+ */
+void GameClass::print_result()
+{
+    cout << "Быки: " << bull_cow.first
+         << " Коровы: " << bull_cow.second
+         << endl;
 }
 
 /**
@@ -72,19 +83,23 @@ void GameClass::clear()
     bull_cow.second = 0;
 }
 
+#ifdef DEBUG
 /**
  * @brief  Вывод отладочной информации
  *
  */
 void GameClass::debug_output() const
 {
+    // Искомое число
+    cout << "Fn: ";
     for (auto i : p_ask.get_data())
         cout << i << " ";
     cout << endl;
 
+    // Введенное пользователем
+    cout << "In: ";
     for (auto i : p_answer.get_data())
         cout << i << " ";
     cout << endl;
-
-    cout << "bull: " << bull_cow.first << " cow: " << bull_cow.second << endl;
 }
+#endif

@@ -16,6 +16,10 @@ public:
     std::vector<int> get_data() const { return data; }
 };
 
+/**
+ * @brief  Игрок задающий число (генерируется с помошью random)
+ *
+ */
 class AskPlayer : public Player
 {
     InitRand rnd;
@@ -25,6 +29,10 @@ public:
     std::pair<int, int> find_coincidences(const std::vector<int> &v);
 };
 
+/**
+ * @brief  Игрок отвечающий на вопрос
+ *
+ */
 class AnswerPlayer : public Player
 {
 };
